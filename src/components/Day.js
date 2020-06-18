@@ -5,7 +5,7 @@ import db from "../firebaseConfig";
 const Day = () => {
 
     const [task, setTask] = useState("");
-    const [li, setLi] = useState("");
+    // const [li, setLi] = useState("");
 
     const handleChange = (e) => {
         setTask(e.target.value) 
@@ -27,19 +27,47 @@ const Day = () => {
         setTask("");
     }
 
-    const handleTask = () => {
-        db.collection("tasks")
+    const handleTask = async () => {
+        await db
+            .collection("tasks")
+            .doc("task")
             .get()
-            .then(QuerySnapshot => {
-                // const data = querySnapshot.docs.map(doc => doc.data());
-                console.log(QuerySnapshot.docs);
+            const data = handleTask.data()
+            setTask({
+                task: data.task,
+            });
+            console.log(data)
+            // .then((querySnapshot) => {
+            //     // const data = querySnapshot.docs.map(doc => doc.data());
+            //     console.log(querySnapshot.docs);
                 // setLi(data.map(obj => {
                 //     return <li>{li}</li>;
                 // }
 
-            });
-            setLi("");
+            // });
     }
+
+    // async componentDidMount({
+//   const res = await db.collection("boards").doc("board").get()
+//   const data = res.data()
+//   this.setState({
+//     field1: data.field1,
+//   })
+//   console.log(this)
+// })
+
+// addList = e => {
+//   db.collection("lists").add({
+//     title: this.state.item,
+//     dueDate: this.state.dueDate
+//   })
+//   this.setState({
+//     item: "",
+//     dueDate: "",
+//   });
+// };
+    //updateTask
+    //deleteTask
 
 
     return (
@@ -51,7 +79,7 @@ const Day = () => {
                 <button>Add task</button>
              </form>
 
-             <form className="container center" onSubmit={handleTask}>
+             <form className="container center" onChange={handleTask}>
                  <h2>Today's tasks</h2>
                     <ul>
                         <li>Drink water</li>
