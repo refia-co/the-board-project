@@ -45,23 +45,24 @@ const Day = () => {
     }
 
     // This function gets the tasks and print them out to the screen.
-    const fetchTasksToShow = async () => {
-        await db
-            .collection("tasks")
-            .doc("task")
+    const fetchTasksToShow = () => {
+         db.collection("tasks")
             .get()
-            const data = db.collection("tasks").data()
-            // Dear Tugba and Refia, this line of code may be wrong and you
-            // need to console.log(data) and double check. But you should set this
-            // to an array of tasks.
-            //setTasksToShow(data.task);
-            console.log(data)
-      
+            .then(querySnapshot => {
+                const data = querySnapshot.docs.map(doc => doc.data())
+                console.log(data)
+                setTasksToShow(data.task);
+            })      
     }
-
+// Dear Tugba and Refia, this line of code may be wrong and you
+// need to console.log(data) and double check. But you should set this
+// to an array of tasks.
     //updateTask
     //deleteTask
 
+    const listItems = tasksToShow.map(item => {
+        <li>{item}</li> 
+    })
 
     return (
         <div className="container">
@@ -75,8 +76,7 @@ const Day = () => {
              <form className="container center">
                  <h2>Today's tasks</h2>
                     <ul>
-                        {tasksToShow}//map tasks
-                        <li>Drink water</li>
+                        
                     </ul>
              </form>
         </div>
@@ -86,14 +86,14 @@ const Day = () => {
 export default Day;
 
 
-      // .then((querySnapshot) => {
-            //     // const data = querySnapshot.docs.map(doc => doc.data());
-            //     console.log(querySnapshot.docs);
-                // setLi(data.map(obj => {
-                //     return <li>{li}</li>;
-                // }
+// .then((querySnapshot) => {
+//     // const data = querySnapshot.docs.map(doc => doc.data());
+//     console.log(querySnapshot.docs);
+// setLi(data.map(obj => {
+//     return <li>{li}</li>;
+// }
 
-            // });
+// });
 
 
 // async componentDidMount({
