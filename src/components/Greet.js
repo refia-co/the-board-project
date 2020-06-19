@@ -4,9 +4,9 @@ import db from "../firebaseConfig";
 
 
 const Greet = (props) => {
-    setTimeout(() => {
-        props.history.push("/day")
-    }, 5000);
+//     setTimeout(() => {
+//         props.history.push("/day")
+//     }, 5000);
 
     const [user, setUser] = useState("");
 
