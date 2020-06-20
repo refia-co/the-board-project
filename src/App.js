@@ -5,7 +5,7 @@ import Day from "./components/Day";
 import Week from "./components/Week";
 import Month from "./components/Month";
 import About from "./components/About";
-// import Greet from "./components/Greet";
+import Greet from "./components/Greet";
 // import Post from "./components/Post";
 
 // import { connect } from "react-redux";
@@ -21,7 +21,7 @@ const App = () => {
     <BrowserRouter>
       <div className="App">
         <Navbar />
-        {/* <Route exact path="/" component={Greet} /> */}
+        <Route exact path="/" component={Greet} />
         <Route path="/day" component={Day} />
         <Route path="/week" component={Week} />
         <Route path="/month" component={Month} />
