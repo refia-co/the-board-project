@@ -8,9 +8,6 @@ import About from "./components/About";
 // import Greet from "./components/Greet";
 // import Post from "./components/Post";
 
-
-
-
 // import { connect } from "react-redux";
 // import planner from "./reducers/planner";
 // import { addWeek, deleteWeek, addTask, deleteTask, mark } from "./reducers/action"
@@ -35,28 +32,5 @@ const App = () => {
     </BrowserRouter>
   );
 }
-
-
-
-// async componentDidMount({
-//   const res = await db.collection("boards").doc("board").get()
-//   const data = res.data()
-//   this.setState({
-//     field1: data.field1,
-//   })
-//   console.log(this)
-// })
-
-// addList = e => {
-//   db.collection("lists").add({
-//     title: this.state.item,
-//     dueDate: this.state.dueDate
-//   })
-//   this.setState({
-//     item: "",
-//     dueDate: "",
-//   });
-// };
-
 
 export default App;
