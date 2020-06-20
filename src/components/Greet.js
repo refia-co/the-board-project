@@ -44,9 +44,9 @@ const Greet = (props) => {
                     <input placeholder="Your name" type="text" onChange={handleChange} value={user}></input>
                     <button>Submit</button>
                 </form>
-                <h1 onChange={handleSubmit}>
+                <h3 onChange={handleSubmit}>
                  Hello {user}!
-                </h1>
+                </h3>
             </div>
         )
     
