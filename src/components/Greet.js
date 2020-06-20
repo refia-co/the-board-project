@@ -30,13 +30,13 @@ const Greet = (props) => {
         setUser("");
     }
 
-    const userSubmit = (user) => {
-        return (
-            <h2 className="center">`Hello {user}!`</h2>
-        )
-    }
+    // const userSubmit = (user) => {
+    //     return (
+    //         <h2 className="center">`Hello {user}!`</h2>
+    //     )
+    // }
     
-    const showUser = user.map(userSubmit);
+    // const showUser = user.map(userSubmit);
 
         return (
             <div>
@@ -44,17 +44,18 @@ const Greet = (props) => {
                     <input placeholder="Your name" type="text" onChange={handleChange} value={user}></input>
                     <button>Submit</button>
                 </form>
-                <div>{showUser}</div>
-
+                <h1 onChange={handleSubmit}>
+                 Hello {user}!
+                </h1>
             </div>
         )
-    }
+    
     
     // return (
-    //     <h1 onChange={Submit}>
+    //     <h1 onChange={handleSubmit}>
     //         Hello {user}!
     //     </h1>
     // )
-// }
+}
 
 export default Greet;
