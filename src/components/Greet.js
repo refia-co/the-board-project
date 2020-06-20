@@ -16,9 +16,10 @@ const Greet = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const currentDate = new Date();
         db.collection("users").add({ 
             user : user,
-            joined: "January 1st",
+            joined: currentDate.toDateString(),
          })
         .then(function() {
             console.log("Document successfully written!");
@@ -29,16 +30,22 @@ const Greet = (props) => {
         setUser("");
     }
 
+    const userSubmit = (user) => {
+        return (
+            <h2 className="center">`Hello {user}!`</h2>
+        )
+    }
+    
+    const showUser = user.map(userSubmit);
+
         return (
             <div>
                 <form onSubmit={handleSubmit} className="center">
                     <input placeholder="Your name" type="text" onChange={handleChange} value={user}></input>
                     <button>Submit</button>
                 </form>
+                <div>{showUser}</div>
 
-                <div>
-                    `Hello {user}!`
-                </div>
             </div>
         )
     }

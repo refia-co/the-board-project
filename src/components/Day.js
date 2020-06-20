@@ -26,10 +26,11 @@ const Day = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const currentDate = new Date();
         db.collection("tasks").add({ 
             task : taskToSubmit,
-            dueDate: "june 17th",
-         })
+            dueDate: currentDate.toDateString(),
+        })
         .then(function() {
             // Fulfills (2) above in the goals for tasksToShow.
             fetchTasksToShow();
@@ -51,8 +52,8 @@ const Day = () => {
             .then(querySnapshot => {
                 const data = querySnapshot.docs.map(doc => doc.data())
                 console.log(data)
-                setTasksToShow(data.task);
-            })      
+                setTasksToShow(data);
+            })
     }
 // Dear Tugba and Refia, this line of code may be wrong and you
 // need to console.log(data) and double check. But you should set this
@@ -60,9 +61,15 @@ const Day = () => {
     //updateTask
     //deleteTask
 
-    const listItems = tasksToShow.map(item => {
-        <li>{item}</li> 
-    })
+
+const itemCard = (item) => {
+    return (
+        <li>{item.task} {item.dueDate}</li>
+    )
+}
+
+const taskItemCards = tasksToShow.map(itemCard);
+
 
     return (
         <div className="container">
@@ -70,13 +77,14 @@ const Day = () => {
            
              <form onSubmit={handleSubmit} className="center">
                 <input onChange={handleChange} type="text" placeholder="What do you want to do?" value={taskToSubmit}></input>
+                <input type="date" placeholder="Due date" value={taskToSubmit}></input>
                 <button>Add task</button>
              </form>
 
              <form className="container center">
                  <h2>Today's tasks</h2>
                     <ul>
-                        
+                        {taskItemCards}
                     </ul>
              </form>
         </div>
@@ -84,34 +92,3 @@ const Day = () => {
 }
 
 export default Day;
-
-
-// .then((querySnapshot) => {
-//     // const data = querySnapshot.docs.map(doc => doc.data());
-//     console.log(querySnapshot.docs);
-// setLi(data.map(obj => {
-//     return <li>{li}</li>;
-// }
-
-// });
-
-
-// async componentDidMount({
-//   const res = await db.collection("boards").doc("board").get()
-//   const data = res.data()
-//   this.setState({
-//     field1: data.field1,
-//   })
-//   console.log(this)
-// })
-
-// addList = e => {
-//   db.collection("lists").add({
-//     title: this.state.item,
-//     dueDate: this.state.dueDate
-//   })
-//   this.setState({
-//     item: "",
-//     dueDate: "",
-//   });
-// };

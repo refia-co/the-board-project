@@ -5,7 +5,17 @@ const About = () => {
     return (
         <div className="container">
             <h4 className="center">About</h4>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Known for their pretty minimalist works, Refia&Tugba chose a pearl white and sea blue themes for this unique project. They used their wild experince in React and Materialize CSS for this bold work. Should you want to dig into these dear web developers' others work, use the github icons below. </p>
+            
+            <span class="text-muted">
+                <a href="https://github.com/reficca">
+                <img src="../githublogo.png" alt="Github logo"/>
+                </a>Refia & 
+
+                <a href="https://github.com/ttugba">
+                <img src="../githublogo.png" alt="Github logo"/>
+                </a> Tugba
+            </span>
         </div>
     )
 }
